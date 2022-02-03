@@ -1,13 +1,23 @@
+var body = document.getElementById('body');
+var popup = document.createElement('div');
+var snapshotButtons = document.createElement('div');
 
-let changeColor = document.getElementById("changeColor");
+var snapshots = getSnapshots();
 
-//Hardcode button color as green
-changeColor.style.backgroundColor = '#3aa757';
-
-// When the button is clicked, open new tab
-changeColor.addEventListener("click", async () => {
-
-  chrome.tabs.create({'url': 'about:blank'}, function(tab) {
-  });
-
+snapshots.forEach(snapshot => {
+  var snapshotButton = document.createElement('button');
+  snapshotButton.className = "btn";
+  snapshotButton.innerHTML = snapshot.Name;
+  snapshotButtons.appendChild(snapshotButton);
 });
+
+popup.appendChild(snapshotButtons);
+body.appendChild(popup);
+
+function getSnapshots() {
+  return [
+    { "Name": "My Snapshot", "URL": "about:blank" },
+    { "Name": "My Snapshot2", "URL": "about:config" }
+  ]
+}
+
