@@ -39,6 +39,8 @@ capture.addEventListener("click", async () => {
     saveSnapshot(tabUrls, tabSnapshotName);
   });
 
+  chrome.runtime.sendMessage({type: "shutter"});
+
   window.location.reload();
 });
 
@@ -67,8 +69,9 @@ function renderEditButton() {
 }
 
 edit.addEventListener("click", async () => {
+  chrome.runtime.sendMessage({type: "blip"});
   chrome.tabs.create({
-    url: "chrome-extension://hoadnmjaaoigkneinkbihgdmcdphdidi/options.html"
+    url: chrome.runtime.getURL('options.html')
   });
 });
 
@@ -85,6 +88,8 @@ function renderClearButton() {
 
 clear.addEventListener("click", async () => {
   chrome.storage.local.clear();
+
+  chrome.runtime.sendMessage({type: "trash"});
 
   window.location.reload();
 });
@@ -115,7 +120,7 @@ function renderSnapshotButtons() {
       snapshotButtons.appendChild(snapshotButton);
       snapshotButton.className = "btn";
       snapshotButton.id = "snapshot";
-      snapshotButton.innerHTML = "<i class=\"far fa-arrow-alt-circle-right\"></i> " + snapshot.name;
+      snapshotButton.innerHTML = "<i class=\"fas fa-chevron-circle-right btn-icon\"></i> " + snapshot.name;
       snapshotButton.addEventListener("click", async () => loadSnapshot(snapshot.name));
     });
 
