@@ -11,7 +11,13 @@ renderConfigButton();
 
 renderClearButton();
 
+renderDivider();
+
 renderSnapshotButtons();
+
+renderDivider();
+
+renderFooter();
 
 /*
   Capture
@@ -30,13 +36,13 @@ capture.addEventListener("click", async () => {
   chrome.tabs.query({currentWindow: true}, function(tabs){
     let tabUrls = tabs.map(t => t.url)
     let tabSnapshotName = tabs[0].title;
-    saveSnapshot(tabUrls, tabSnapshotName, renderSnapshotButtons());
+    saveSnapshot(tabUrls, tabSnapshotName);
   });
 
   window.location.reload();
 });
 
-function saveSnapshot(tabUrls, tabSnapshotName, callbackFn) {
+function saveSnapshot(tabUrls, tabSnapshotName) {
   chrome.storage.local.get("tabSnapshots", function(result) {
 
     let updatedSnapshots = !!result.tabSnapshots ? result.tabSnapshots : [];
@@ -45,7 +51,7 @@ function saveSnapshot(tabUrls, tabSnapshotName, callbackFn) {
       urlList: tabUrls
     });
 
-    chrome.storage.local.set({"tabSnapshots": updatedSnapshots}, callbackFn);
+    chrome.storage.local.set({"tabSnapshots": updatedSnapshots});
   });
 }
 
@@ -73,7 +79,7 @@ function renderClearButton() {
   var clearButton =  document.createElement('button');
   clearButton.className = "btn";
   clearButton.id = "clear";
-  clearButton.innerHTML = "<i class=\"fas fa-trash\"></i> " + "Clear";
+  clearButton.innerHTML = "<i class=\"fas fa-trash-alt\"></i> " + "Clear";
   popup.appendChild(clearButton);  
 }
 
@@ -82,6 +88,15 @@ clear.addEventListener("click", async () => {
 
   window.location.reload();
 });
+
+/*
+  Divider
+*/
+function renderDivider(){
+  var divider = document.createElement('hr');
+  divider.className = "divider";
+  popup.appendChild(divider);
+}
 
 /*
   Load Snapshots
@@ -121,4 +136,13 @@ function loadSnapshot(name) {
   })
 
   window.location.reload();
+}
+
+/*
+  Footer
+*/
+function renderFooter() {
+  var footer = document.createElement('div');
+  footer.innerHTML = "Tab Snapshots";
+  popup.appendChild(footer);
 }

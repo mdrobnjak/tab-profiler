@@ -1,13 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="button.css">
     <link type="text/css" rel="stylesheet" href="jsgrid-1.5.3/jsgrid.min.css" />
     <link type="text/css" rel="stylesheet" href="jsgrid-1.5.3/jsgrid-theme.min.css" />
+    <style>
+      .body {
+        background-color: #3b3b3b;
+        color:rgb(0, 0, 0);
+      }
+
+      .title {
+        color:rgb(233, 233, 233);
+      }
+
+      .jsgrid-row>.jsgrid-cell.gray {
+        background-color: #3b3b3b;
+        color:rgb(233, 233, 233);
+      }
+
+      .jsgrid-alt-row>.jsgrid-cell.gray {
+        background-color: #3b3b3b;
+        color:rgb(233, 233, 233);
+      }
+
+      .jsgrid-header-row>.jsgrid-header-cell.gray {
+        background-color: #3b3b3b;
+        color:rgb(233, 233, 233);
+      }
+    </style>
   </head>
-  <body>
+  <body class="body">
     <div>
-      <h1>Tab Snapshots</h1>
+      <h1 class="title">Tab Snapshots</h1>
     </div>
     <div id="jsGrid"></div>
 
