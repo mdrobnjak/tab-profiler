@@ -7,7 +7,7 @@ body.appendChild(popup);
 
 renderCaptureButton();
 
-renderConfigButton();
+renderEditButton();
 
 renderClearButton();
 
@@ -56,17 +56,17 @@ function saveSnapshot(tabUrls, tabSnapshotName) {
 }
 
 /*
-  Config
+  Edit
 */
-function renderConfigButton() {
-  var configButton =  document.createElement('button');
-  configButton.className = "btn";
-  configButton.id = "config";
-  configButton.innerHTML = "<i class=\"fas fa-cog\"></i> " + "Config";
-  popup.appendChild(configButton);  
+function renderEditButton() {
+  var editButton =  document.createElement('button');
+  editButton.className = "btn";
+  editButton.id = "edit";
+  editButton.innerHTML = "<i class=\"fas fa-edit\"></i> " + "Edit";
+  popup.appendChild(editButton);  
 }
 
-config.addEventListener("click", async () => {
+edit.addEventListener("click", async () => {
   chrome.tabs.create({
     url: "chrome-extension://hoadnmjaaoigkneinkbihgdmcdphdidi/options.html"
   });
