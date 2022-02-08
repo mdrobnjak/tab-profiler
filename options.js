@@ -20,7 +20,7 @@ $(document).ready(function () {
       data: snapshots,
   
       fields: [
-          { name: "name", type: "text", width: 100, validate: "required", css: 'gray', headercss: 'gray' },
+          { name: "name", type: "text", width: 100, validate: "required", css: 'gray bold', headercss: 'gray' },
           { name: "urlList", type: "text", sorting: false, css: 'gray', headercss: 'gray' },
           { type: "control", css: 'gray', headercss: 'gray' }
       ]
