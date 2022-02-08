@@ -69,7 +69,6 @@ function renderEditButton() {
 }
 
 edit.addEventListener("click", async () => {
-  chrome.runtime.sendMessage({type: "blip"});
   chrome.tabs.create({
     url: chrome.runtime.getURL('options.html')
   });
@@ -128,6 +127,8 @@ function renderSnapshotButtons() {
 }
 
 function loadSnapshot(name) {
+  chrome.runtime.sendMessage({type: "blip"});
+
   chrome.storage.local.get("tabSnapshots", function(result) {
     result["tabSnapshots"].forEach(tabSnapshot => {
       if(tabSnapshot.name == name) {

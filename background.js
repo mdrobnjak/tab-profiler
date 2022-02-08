@@ -3,16 +3,7 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-  switch(message.type) {
-    case "shutter":
-      playSound(message.type+".mp3");
-      break;
-    case "trash":
-      playSound(message.type+".mp3");
-      break;
-    case "blip":
-      playSound(message.type+".mp3")
-  }
+  playSound(message.type+".mp3");
 });
 
 function playSound(filename) {

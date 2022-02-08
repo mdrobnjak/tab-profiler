@@ -1,3 +1,4 @@
+chrome.runtime.sendMessage({type: "page"});
 
 $(document).ready(function () {
 
