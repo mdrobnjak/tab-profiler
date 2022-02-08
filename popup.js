@@ -143,6 +143,7 @@ function loadSnapshot(name) {
 */
 function renderFooter() {
   var footer = document.createElement('div');
+  footer.className = "footer";
   footer.innerHTML = "Tab Snapshots";
   popup.appendChild(footer);
 }
