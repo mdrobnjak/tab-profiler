@@ -119,7 +119,7 @@ function renderSnapshotButtons() {
       snapshotButtons.appendChild(snapshotButton);
       snapshotButton.className = "btn";
       snapshotButton.id = "snapshot";
-      snapshotButton.innerHTML = "<i class=\"fas fa-chevron-circle-right btn-icon\"></i> " + snapshot.name;
+      snapshotButton.innerHTML = snapshot.name + " <i class=\"fas fa-chevron-circle-right btn-icon\"></i>";
       snapshotButton.addEventListener("click", async () => loadSnapshot(snapshot.name));
     });
 
