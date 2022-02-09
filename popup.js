@@ -130,19 +130,24 @@ function loadSnapshot(name) {
   chrome.runtime.sendMessage({type: "blip"});
 
   chrome.storage.local.get("tabSnapshots", function(result) {
-    result["tabSnapshots"].forEach(tabSnapshot => {
-      if(tabSnapshot.name == name) {
-        tabSnapshot.urlList.forEach(url => {
-          chrome.tabs.create({
-            url: url
-          });
-        })
-      }
-    })
+    try{
+      result["tabSnapshots"].forEach(tabSnapshot => {
+        if(tabSnapshot.name == name) {
+          tabSnapshot.urlList.forEach(url => {
+            chrome.tabs.create({
+              url: url
+            });
+          })
+          throw BreakException;
+        }
+      })
+    } catch (e) {}
   })
 
   window.location.reload();
 }
+
+var BreakException = {};
 
 /*
   Footer
